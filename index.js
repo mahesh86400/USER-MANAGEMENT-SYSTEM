@@ -16,11 +16,26 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
 
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_PORT:", process.env.DB_PORT);
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_NAME:", process.env.DB_NAME);
+
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: process.env.MYSQLHOST,
+    port: process.env.MYSQLPORT,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+});
+
+connection.connect((err) => {
+    if (err) {
+        console.error("❌ Database connection failed:");
+        console.error(err);
+    } else {
+        console.log("✅ Connected to Railway MySQL");
+    }
 });
 
 app.get("/",(req,res)=>{
