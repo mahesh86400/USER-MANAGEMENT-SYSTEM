@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New User</title>
+
+    <link rel="stylesheet" href="/css/new.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Add New User</h1>
+
+    <form action="/users" method="POST">
+
+        <div class="input-group">
+            <label>Username</label>
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                required
+            >
+        </div>
+
+        <div class="input-group">
+            <label>Email</label>
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                required
+            >
+        </div>
+
+        <button type="submit">Add User</button>
+
+    </form>
+
+    <a href="/users" class="back">← Back to Users</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+
+    <link rel="stylesheet" href="/css/detail.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>User Details</h1>
+
+    <div class="card">
+
+        <div class="row">
+            <span>ID</span>
+            <p><%= user.id %></p>
+        </div>
+
+        <div class="row">
+            <span>Username</span>
+            <p><%= user.username %></p>
+        </div>
+
+        <div class="row">
+            <span>Email</span>
+            <p><%= user.email %></p>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <a href="/users/<%= user.id %>/edit" class="edit">
+            Edit
+        </a>
+
+        <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+            <button class="delete">Delete</button>
+        </form>
+
+    </div>
+
+    <a href="/users" class="back">← Back to Users</a>
+
+</div>
+
+</body>
+</html>
