@@ -1,6 +1,8 @@
+require("dotenv").config();
+
+
 const express=require("express")
 const app=express();
-const port=8080;
 const mysql=require("mysql2");
 
 app.set("view engine","ejs");
@@ -14,12 +16,12 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
 
-const connection=mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "@mahesh86400",
-    database: "college"
-})
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+});
 
 app.get("/",(req,res)=>{
     let q='select count(*) as count from users';//result = [{count: 49}]; this is the output of this query,you can see how data is returning by this line  console.log(result)    
@@ -120,7 +122,8 @@ app.delete("/users/:id", (req, res) => {
 
 
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(port,()=>{
-    console.log(`app is listning on port${port}`);
-})
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
