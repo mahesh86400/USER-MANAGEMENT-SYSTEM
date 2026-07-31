@@ -15,11 +15,6 @@ app.use(methodOverride("_method"));
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
-console.log("MYSQLHOST:", process.env.MYSQLHOST);
-console.log("MYSQLPORT:", process.env.MYSQLPORT);
-console.log("MYSQLUSER:", process.env.MYSQLUSER);
-console.log("MYSQLPASSWORD:", process.env.MYSQLPASSWORD ? "Loaded" : "Not Loaded");
-console.log("MYSQLDATABASE:", process.env.MYSQLDATABASE);
 
 const connection = mysql.createConnection({
     host: process.env.MYSQLHOST || process.env.DB_HOST,
